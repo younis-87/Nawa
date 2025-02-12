@@ -1,0 +1,161 @@
+body {
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    direction: rtl;
+
+    background-color: #000;
+
+    color: white;
+
+}
+
+.background {
+
+    padding: 20px;
+
+}
+
+.card {
+
+    background: rgba(0, 0, 0, 0.8);
+
+    padding: 20px;
+
+    width: 100%;
+
+    max-width: 350px;
+
+    margin: 20px auto;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+}
+
+.logo-container {
+
+    text-align: center;
+
+    margin-bottom: 10px;
+
+}
+
+.logo {
+
+    width: 80px;
+
+    height: auto;
+
+    display: block;
+
+    margin: 0 auto;
+
+}
+
+.title {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+}
+
+.verse {
+
+    font-size: 18px;
+
+}
+
+.desc, .date, .location, .prayer {
+
+    font-size: 16px;
+
+}
+
+.name {
+
+    font-size: 22px;
+
+    background-color: teal;
+
+    padding: 5px;
+
+    border-radius: 5px;
+
+}
+
+.photo-container {
+
+    text-align: center;
+
+    margin-top: 10px;
+
+}
+
+.photo {
+
+    width: 80px;
+
+    height: 80px;
+
+    border-radius: 50%;
+
+    border: 2px solid white;
+
+}
+
+.controls {
+
+    margin-top: 20px;
+
+}
+
+input {
+
+    display: block;
+
+    margin: 5px auto;
+
+    padding: 5px;
+
+    width: 80%;
+
+}
+
+.date-inputs {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+.date-inputs input {
+
+    width: 60px;
+
+    text-align: center;
+
+}
+
+button {
+
+    margin: 10px;
+
+    padding: 10px;
+
+    background: teal;
+
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>وفيات 1</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="ar">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تصميم نعي</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="background">
+
+        <div class="card" id="card">
+
+            <div class="logo-container">
+
+                <img src="logo.png" alt="لوغو أهل ديربعلبة" class="logo">
+
+            </div>
+
+            <h1 class="title">البقاء لله</h1>
+
+            <p class="verse">إنا لله وإنا إليه راجعون</p>
+
+            <p class="desc">انتقل إلى رحمة الله تعالى:</p>
+
+            <h2 class="name" id="name">__________</h2>
+
+            <p class="date">وذلك بتاريخ: <span id="date">__/__/____</span></p>
+
+            <p class="location">مكان الوفاة: <span id="location">__________</span></p>
+
+            <div class="photo-container">
+
+                <img src="default.jpg" alt="صورة الفقيد" class="photo" id="photo">
+
+            </div>
+
+            <p class="prayer">راجين من الله أن يتغمده في واسع رحمته</p>
+
+        </div>
+
+    </div>
+
+    <div class="controls">
+
+        <label>الاسم: <input type="text" id="inputName" placeholder="أدخل اسم المتوفى"></label>
+
+        
+
+        <label>التاريخ:</label>
+
+        <div class="date-inputs">
+
+            <input type="number" id="day" placeholder="يوم" min="1" max="31">
+
+            <input type="number" id="month" placeholder="شهر" min="1" max="12">
+
+            <input type="number" id="year" placeholder="سنة" min="1900" max="2099">
+
+        </div>
+
+        
+
+        <label>المكان: <input type="text" id="inputLocation" placeholder="أدخل مكان الوفاة"></label>
+
+        <label>صورة الفقيد: <input type="file" id="inputPhoto" accept="image/*"></label>
+
+        <button onclick="saveAsImage()">حفظ الصورة</button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
