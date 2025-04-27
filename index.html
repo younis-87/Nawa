@@ -1,102 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>وفيات 1</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-
-<html lang="ar">
-
-<head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>تصميم نعي</title>
-
+    <title>نعوة وفاة - أهل ديربعلبة</title>
     <link rel="stylesheet" href="style.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
+    <!-- إضافة مكتبة فيسبوك للمشاركة -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v17.0"></script>
 </head>
-
 <body>
-
-    <div class="background">
-
-        <div class="card" id="card">
-
-            <div class="logo-container">
-
-                <img src="logo.png" alt="لوغو أهل ديربعلبة" class="logo">
-
+    <div class="container">
+        <div class="card-container">
+            <div class="card" id="card">
+                <div class="logo-container">
+                    <img src="images/logo.png" alt="شعار أهل ديربعلبة" class="logo">
+                </div>
+                <h1 class="title">البقاء لله</h1>
+                <p class="verse">إنا لله وإنا إليه راجعون</p>
+                <p class="desc">انتقل إلى رحمة الله تعالى:</p>
+                <h2 class="name" id="name">__________</h2>
+                <p class="date">وذلك بتاريخ: <span id="date">__/__/____</span></p>
+                <p class="location">مكان الوفاة: <span id="location">__________</span></p>
+                <div class="photo-container">
+                    <img src="images/default.jpg" alt="صورة الفقيد" class="photo" id="photo">
+                </div>
+                <p class="prayer">راجين من الله أن يتغمده في واسع رحمته</p>
+                <p class="source">صفحة أهل ديربعلبة</p>
             </div>
-
-            <h1 class="title">البقاء لله</h1>
-
-            <p class="verse">إنا لله وإنا إليه راجعون</p>
-
-            <p class="desc">انتقل إلى رحمة الله تعالى:</p>
-
-            <h2 class="name" id="name">__________</h2>
-
-            <p class="date">وذلك بتاريخ: <span id="date">__/__/____</span></p>
-
-            <p class="location">مكان الوفاة: <span id="location">__________</span></p>
-
-            <div class="photo-container">
-
-                <img src="default.jpg" alt="صورة الفقيد" class="photo" id="photo">
-
-            </div>
-
-            <p class="prayer">راجين من الله أن يتغمده في واسع رحمته</p>
-
         </div>
 
+        <div class="controls">
+            <h2>إنشاء نعوة وفاة</h2>
+            
+            <div class="form-group">
+                <label for="inputName">اسم المتوفى:</label>
+                <input type="text" id="inputName" placeholder="أدخل اسم المتوفى" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label>تاريخ الوفاة:</label>
+                <div class="date-inputs">
+                    <input type="number" id="day" placeholder="يوم" min="1" max="31" class="form-control date-input">
+                    <input type="number" id="month" placeholder="شهر" min="1" max="12" class="form-control date-input">
+                    <input type="number" id="year" placeholder="سنة" min="1900" max="2099" class="form-control date-input">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="inputLocation">مكان الوفاة:</label>
+                <input type="text" id="inputLocation" placeholder="أدخل مكان الوفاة" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="inputPhoto">صورة الفقيد:</label>
+                <input type="file" id="inputPhoto" accept="image/*" class="form-control file-input">
+                <small class="hint">يفضل صورة مربعة للحصول على أفضل نتيجة</small>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="saveAsImage()" class="btn primary-btn">
+                    <i class="icon-download"></i> حفظ كصورة
+                </button>
+                <button onclick="shareOnFacebook()" class="btn facebook-btn">
+                    <i class="icon-facebook"></i> مشاركة على فيسبوك
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="controls">
-
-        <label>الاسم: <input type="text" id="inputName" placeholder="أدخل اسم المتوفى"></label>
-
-        
-
-        <label>التاريخ:</label>
-
-        <div class="date-inputs">
-
-            <input type="number" id="day" placeholder="يوم" min="1" max="31">
-
-            <input type="number" id="month" placeholder="شهر" min="1" max="12">
-
-            <input type="number" id="year" placeholder="سنة" min="1900" max="2099">
-
+    <!-- نافذة المعاينة للمشاركة -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeShareModal()">&times;</span>
+            <h2>مشاركة النعوة</h2>
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="معاينة النعوة">
+            </div>
+            <div class="share-options">
+                <div class="fb-share-button" 
+                    data-href="" 
+                    data-layout="button"
+                    data-size="large">
+                </div>
+                <button onclick="copyShareLink()" class="btn copy-btn">
+                    <i class="icon-copy"></i> نسخ الرابط
+                </button>
+            </div>
         </div>
-
-        
-
-        <label>المكان: <input type="text" id="inputLocation" placeholder="أدخل مكان الوفاة"></label>
-
-        <label>صورة الفقيد: <input type="file" id="inputPhoto" accept="image/*"></label>
-
-        <button onclick="saveAsImage()">حفظ الصورة</button>
-
     </div>
 
     <script src="script.js"></script>
-
-</body>
-
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>

@@ -1,161 +1,368 @@
-body {
-
-    text-align: center;
-
-    font-family: Arial, sans-serif;
-
-    direction: rtl;
-
-    background-color: #000;
-
-    color: white;
-
+/* تنسيق عام */
+:root {
+    --primary-color: #006064;
+    --secondary-color: #00838f;
+    --accent-color: #ffd700;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --card-background: rgba(0, 0, 0, 0.9);
+    --input-background: rgba(255, 255, 255, 0.9);
+    --input-text: #333333;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.background {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-family: 'Amiri', 'Scheherazade New', Arial, sans-serif;
+    direction: rtl;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
     padding: 20px;
+}
 
+/* تنسيق الحاويات */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .card-container {
+        flex: 1;
+    }
+    
+    .controls {
+        flex: 1;
+    }
+}
+
+/* تنسيق بطاقة النعوة */
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .card {
-
-    background: rgba(0, 0, 0, 0.8);
-
-    padding: 20px;
-
+    background: var(--card-background);
+    padding: 30px;
     width: 100%;
-
-    max-width: 350px;
-
-    margin: 20px auto;
-
-    border-radius: 10px;
-
+    max-width: 500px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     text-align: center;
-
+    border: 2px solid var(--primary-color);
 }
 
+/* تنسيق الشعار */
 .logo-container {
-
     text-align: center;
-
-    margin-bottom: 10px;
-
+    margin-bottom: 10px; /* تقليل المسافة من 20px إلى 10px */
 }
 
 .logo {
-
-    width: 80px;
-
+    width: 150px; /* تكبير الشعار */
     height: auto;
-
     display: block;
-
     margin: 0 auto;
-
 }
 
+/* تنسيق النصوص */
 .title {
-
-    font-size: 28px;
-
+    font-size: 36px;
     font-weight: bold;
-
+    margin-bottom: 10px;
+    color: var(--accent-color);
 }
 
 .verse {
-
-    font-size: 18px;
-
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-style: italic;
 }
 
-.desc, .date, .location, .prayer {
-
-    font-size: 16px;
-
+.desc {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .name {
-
-    font-size: 22px;
-
-    background-color: teal;
-
-    padding: 5px;
-
-    border-radius: 5px;
-
+    font-size: 28px;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin: 15px 0;
+    box-shadow: var(--box-shadow);
 }
 
+.date, .location {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.prayer {
+    font-size: 18px;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.source {
+    font-size: 16px;
+    margin-top: 15px;
+    color: var(--accent-color);
+}
+
+/* تنسيق صورة المتوفي */
 .photo-container {
-
     text-align: center;
-
-    margin-top: 10px;
-
+    margin: 20px 0;
 }
 
 .photo {
-
-    width: 80px;
-
-    height: 80px;
-
-    border-radius: 50%;
-
-    border: 2px solid white;
-
+    width: 200px; /* تكبير الصورة */
+    height: 200px; /* جعل الصورة مربعة */
+    object-fit: cover; /* للتأكد من ملء المساحة المربعة */
+    border: 3px solid var(--accent-color);
+    border-radius: 10px; /* جعل الصورة مربعة مع حواف دائرية قليلاً */
+    box-shadow: var(--box-shadow);
 }
 
+/* تنسيق نموذج الإدخال */
 .controls {
-
-    margin-top: 20px;
-
+    background: rgba(0, 0, 0, 0.7);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 2px solid var(--primary-color);
 }
 
-input {
+.controls h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-size: 24px;
+}
 
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
     display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
 
-    margin: 5px auto;
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    background-color: var(--input-background);
+    color: var(--input-text);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
 
-    padding: 5px;
-
-    width: 80%;
-
+.form-control:focus {
+    border-color: var(--accent-color);
+    outline: none;
 }
 
 .date-inputs {
-
     display: flex;
-
-    justify-content: center;
-
     gap: 10px;
-
 }
 
-.date-inputs input {
-
-    width: 60px;
-
+.date-input {
+    flex: 1;
     text-align: center;
-
 }
 
-button {
-
-    margin: 10px;
-
+.file-input {
     padding: 10px;
+}
 
-    background: teal;
+.hint {
+    display: block;
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 14px;
+}
 
-    color: white;
+/* تنسيق الأزرار */
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
 
+.btn {
+    padding: 12px 20px;
     border: none;
-
+    border-radius: var(--border-radius);
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 150px;
+}
 
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.facebook-btn {
+    background-color: #1877f2;
+    color: white;
+}
+
+.facebook-btn:hover {
+    background-color: #0e5aa7;
+}
+
+.copy-btn {
+    background-color: #555;
+    color: white;
+}
+
+.copy-btn:hover {
+    background-color: #777;
+}
+
+/* أيقونات */
+.icon-download:before {
+    content: "⬇️";
+}
+
+.icon-facebook:before {
+    content: "📱";
+}
+
+.icon-copy:before {
+    content: "📋";
+}
+
+/* نافذة المشاركة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 5% auto;
+    padding: 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.preview-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#previewImage {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.share-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* تحسينات للأجهزة المحمولة */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .logo {
+        width: 120px;
+    }
+    
+    .title {
+        font-size: 30px;
+    }
+    
+    .verse {
+        font-size: 18px;
+    }
+    
+    .name {
+        font-size: 24px;
+    }
+    
+    .photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
 }
